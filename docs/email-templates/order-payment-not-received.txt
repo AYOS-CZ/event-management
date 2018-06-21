@@ -1,0 +1,39 @@
+Dear user,
+
+we didn't receive yet payment of $amount for your order $orderId, following are your order details:
+
+------------------
+list of events ordered
+......
+......
+Example look:
+$eventName
+$eventDescription
+$eventTimeSlot (if relevant, not related to lecture types)
+
+etc...
+------------------
+
+Please do payment based on following details:
+Bank Account: $bankAccount
+Variable symbol: $variableSymbol
+Swift code: $swiftCode
+Bank name: $bankName
+Bank address street: $bankAddressStreet
+Bank address city: $bankAddressCity
+Bank address zip: $bankAddressZip
+
+If you already executed the payment, please contact support team at:
+email: $supportEmail (can support different country)
+telephone: $supportLine (can support different country)
+
+If we don't receive any feedback or payment in $notReceivedPaymentInterval (based on wireframes Global Application Settings - can vary per country), we will cancel your order.
+
+Thank you,
+
+your healing team.
+
+
+
+
+

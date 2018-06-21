@@ -1,0 +1,30 @@
+Dear user,
+
+we didn't receive yet payment of $amount for your order $orderId, following are your order details in agreed interval in $notReceivedPaymentInterval:
+
+------------------
+list of events ordered
+......
+......
+Example look:
+$eventName
+$eventDescription
+$eventTimeSlot (if relevant, not related to lecture types)
+
+etc...
+------------------
+
+As consequence we had to cancel your order.
+
+In case of any questions please contact our support team at:
+email: $supportEmail (can support different country)
+telephone: $supportLine (can support different country)
+
+Thank you,
+
+your healing team.
+
+
+
+
+

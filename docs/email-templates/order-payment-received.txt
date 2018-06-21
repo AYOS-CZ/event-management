@@ -1,0 +1,28 @@
+Dear user,
+
+we received payment of $amount for your order $orderId, following are your order details:
+
+------------------
+list of events ordered
+......
+......
+Example look:
+$eventName
+$eventDescription
+$eventTimeSlot (if relevant, not related to lecture types)
+
+etc...
+------------------
+
+You can review your order at: $userPanelWebSiteListOfOrders (refer to wireframes provided)
+
+Thank you,
+
+your healing team.
+
+Contact info:
+email: $supportEmail (can support different country)
+telephone: $supportLine (can support different country)
+
+
+
