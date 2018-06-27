@@ -1,3 +1,5 @@
+import { UserPanelModule } from './user-panel/user-panel.module';
+import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -25,7 +27,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserModule,
     SharedModule,
     OperatorPanelModule,
+    AdminPanelModule,
+    UserPanelModule,
     UtilsModule,
+
     RouterModule.forRoot(routes),
     TranslateModule.forRoot({
       loader: {

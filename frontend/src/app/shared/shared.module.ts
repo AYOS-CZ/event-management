@@ -1,3 +1,4 @@
+import { CrudService } from './crud.service';
 import { ApiService } from './api.service';
 import { GlobalService } from './global.service';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,8 @@ import { MockService } from './mock.service';
     GlobalService,
     ApiService,
     NotificationsService,
-    MockService
+    MockService,
+    CrudService
   ],
   declarations: []
 })

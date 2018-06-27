@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EventListComponent } from './event-list/event-list.component';
-import { EventDetailComponent } from './event-detail/event-detail.component';
+import { EventDetailUserComponent } from './event-detail/event-detail.component';
+import { EventListUserComponent } from './event-list/event-list.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [EventListComponent, EventDetailComponent]
+  declarations: [EventListUserComponent, EventDetailUserComponent]
 })
 export class UserPanelModule { }

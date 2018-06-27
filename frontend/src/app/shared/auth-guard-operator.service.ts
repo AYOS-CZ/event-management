@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class AuthGuardOperatorService implements CanActivate {
     constructor(
         private router: Router
     ) {}
@@ -16,7 +16,7 @@ export class AuthGuardService implements CanActivate {
         state: RouterStateSnapshot
     ) {
         let auth = localStorage.getItem('auth');
-        if (auth && auth == 'user') {            
+        if (auth && auth == 'operator') {            
             return true;
         } else {
             this.router.navigateByUrl('/auth-placeholder');

@@ -25,7 +25,7 @@ export class ApiService {
     this.headers = new HttpHeaders();
   }
 
-  post(endpoint: string, data: any) {
+  post(endpoint: string, data: any, customErrorHandler = null) {
     return new Observable(observer => {
       if (CONFIG.isMock) {
         this.mock[endpoint].subscribe(res => {
@@ -34,7 +34,61 @@ export class ApiService {
       } else {
         this.http.post(CONFIG.apiUrl + '/' + endpoint, data, {headers: this.headers}).subscribe(res => {
           observer.next(res);
+        }, err => {
+          if(customErrorHandler) customErrorHandler(err);
+          else this.handleError(err);
+        });
+      }
+    })
+  }
+
+  get(endpoint: string, customErrorHandler = null) {
+    return new Observable(observer => {
+      if (CONFIG.isMock) {
+        this.mock[endpoint].subscribe(res => {
+          observer.next(res);
         }, err => this.handleError);
+      } else {
+        this.http.post(CONFIG.apiUrl + '/' + endpoint, {headers: this.headers}).subscribe(res => {
+          observer.next(res);
+        }, err => {
+          if(customErrorHandler) customErrorHandler(err);
+          else this.handleError(err);
+        });
+      }
+    })
+  }
+
+  put(endpoint: string, id: string, data: any, customErrorHandler = null) {
+    return new Observable(observer => {
+      if (CONFIG.isMock) {
+        this.mock[endpoint].subscribe(res => {
+          observer.next(res);
+        }, err => this.handleError);
+      } else {
+        this.http.put(CONFIG.apiUrl + '/' + endpoint + '/' + id, data, {headers: this.headers}).subscribe(res => {
+          observer.next(res);
+        }, err => {
+          if(customErrorHandler) customErrorHandler(err);
+          else this.handleError(err);
+        });
+      }
+    })
+  }
+
+  delete(endpoint: string, id: string, customErrorHandler = null) {
+    return new Observable(observer => {
+      if (CONFIG.isMock) {
+        this.mock[endpoint].subscribe(res => {
+          observer.next(res);
+        }, err => this.handleError);
+      } else {
+        this.http.delete(CONFIG.apiUrl + '/' + endpoint + '/' + id, {headers: this.headers}).subscribe(res => {
+          observer.next(res);
+        }, err => {
+          if(customErrorHandler) customErrorHandler(err);
+          else this.handleError(err);
+        });
       }
     })
   }
