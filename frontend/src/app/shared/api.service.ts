@@ -43,7 +43,7 @@ export class ApiService {
     this.notifications.showError(error.message);
   }
 
-  login(token) {
+  setAuth(token) {
     this.token = token;
     this.headers.append('Authorisation', token);
   }
