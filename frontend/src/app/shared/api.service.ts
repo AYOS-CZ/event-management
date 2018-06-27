@@ -34,7 +34,7 @@ export class ApiService {
       } else {
         this.http.post(CONFIG.apiUrl + '/' + endpoint, data, {headers: this.headers}).subscribe(res => {
           observer.next(res);
-        }, err => this.handleError)
+        }, err => this.handleError);
       }
     })
   }

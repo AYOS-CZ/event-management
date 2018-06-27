@@ -1,6 +1,3 @@
-import { CommonPagesModule } from './common-pages/common-pages.module';
-import { OperatorModule } from './operator/operator.module';
-import { EventsModule } from './events/events.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,6 +8,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UserModule } from './user/user.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { routes } from './app.routes';
+import { UtilsModule } from './utils/utils.module';
+import { OperatorPanelModule } from './operator-panel/operator-panel.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,9 +24,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     UserModule,
     SharedModule,
-    EventsModule,
-    OperatorModule,
-    CommonPagesModule,
+    OperatorPanelModule,
+    UtilsModule,
     RouterModule.forRoot(routes),
     TranslateModule.forRoot({
       loader: {

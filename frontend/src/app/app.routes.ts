@@ -1,7 +1,7 @@
 import { AuthGuardService } from './shared/auth-guard.service';
 import { Route } from "@angular/router";
-import { HomeComponent } from "./common-pages/home/home.component";
-import { UnauthorizedComponent } from './common-pages/unauthorized/unauthorized.component';
+import { HomeComponent } from "./utils/home/home.component";
+import { UnauthorizedComponent } from './utils/unauthorized/unauthorized.component';
 
 export const routes: Route[] = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
