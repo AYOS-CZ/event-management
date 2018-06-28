@@ -1,0 +1,325 @@
+<!--eco Header starts-->
+<header>
+  <!--Header-->
+  <div class="kode_eco_navigations">
+    <!--container-->
+    <div class="container">
+      <!--Header top row-->
+      <div class="kode_eco-top_bar">
+        <!--Header top row logo-->
+        <div class="kode_eco_logo">
+          <a href="#" [routerLink]="['/home']">
+            <img src="assets/images/eco-logo.png" alt="">
+          </a>
+        </div>
+
+        <!--Header top row social icons-->
+        <div class="kode_eco_social_icons" *ngIf="login">
+          <ul class="social-accounts">
+            <li>
+              <span class="hello">{{"HEADER.HELLO" | translate}}, {{login.firstName}} {{login.lastName}}!</span>
+
+            </li>
+            
+          </ul>
+          <ul class="social-accounts">
+            <li>
+              <a (click)="logout()">{{'HEADER.LOG_OUT' | translate}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--Header top row ends-->
+
+
+      <!--Header nav row-->
+      <div class="kode_navigaion_bar">
+        <!--Responsive Menu Start-->
+        <!-- TODO: revive the mobile menu -->
+        <div id="kode-responsive-navigation" class="dl-menuwrapper">
+          <button class="dl-trigger">Menu</button>
+          <ul class="dl-menu">
+            <li class="active">
+              <a class="active" href="index.html">Home</a>
+              <ul class="dl-submenu">
+                <li>
+                  <a href="index.html">Home 1</a>
+                </li>
+                <li>
+                  <a href="index-02.html">Home 2</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="about-us.html">About Us</a>
+            </li>
+            <li class="menu-item">
+              <a href="blog-grid.html">Blog</a>
+              <ul class="dl-submenu">
+                <li>
+                  <a href="blog-grid.html">Blog grid</a>
+                </li>
+                <li>
+                  <a href="blog-grid-2.html">Blog grid 2</a>
+                </li>
+                <li>
+                  <a href="blog-listing.html">Blog listing</a>
+                </li>
+                <li>
+                  <a href="blog-single.html">Blog single</a>
+                </li>
+                <li>
+                  <a href="blog-detail.html">Blog Detail</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="causes_grid.html">causes</a>
+              <ul class="dl-submenu">
+                <li>
+                  <a href="causes_grid.html">causes grid</a>
+                </li>
+                <li>
+                  <a href="cause-detail.html">causes detail</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="services.html">Services</a>
+            </li>
+            <li class="menu-item">
+              <a href="event-grid.html">events</a>
+              <ul class="dl-submenu">
+                <li>
+                  <a href="event-grid.html">events grid</a>
+                </li>
+                <li>
+                  <a href="event-listing.html">events listing</a>
+                </li>
+                <li>
+                  <a href="event-detail.html">events Detail</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="products-gallery.html">products</a>
+              <ul class="dl-submenu">
+                <li>
+                  <a href="products-detail.html">products detail</a>
+                </li>
+                <li>
+                  <a href="products-gallery.html">products gallery</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="project-2.html">project</a>
+              <ul class="dl-submenu">
+                <li>
+                  <a href="project-2.html">projects grid</a>
+                </li>
+                <li>
+                  <a href="project-gallery.html">projects gallery</a>
+                </li>
+                <li>
+                  <a href="project-detail.html">projects detail</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="team-volunteers.html">team</a>
+              <ul class="dl-submenu">
+                <li>
+                  <a href="team-volunteers.html">teams</a>
+                </li>
+                <li>
+                  <a href="team-detail.html">Team detail</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="">pages</a>
+              <ul class="dl-submenu">
+                <li>
+                  <a href="404.html">404 page</a>
+                </li>
+                <li>
+                  <a href="comming-soon.html">Comming soon</a>
+                </li>
+                <li>
+                  <a href="donate-signup.html">Donate Now (Popup)</a>
+                </li>
+                <li>
+                  <a href="shortcodes.html">shortcodes</a>
+                </li>
+                <li>
+                  <a href="donate-signup.html">Donate Now (Page)</a>
+                </li>
+                <li>
+                  <a href="login-01.html">login</a>
+                </li>
+                <li>
+                  <a href="testimonial.html">testimonial</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="contact-us.html">contact-us</a>
+            </li>
+          </ul>
+        </div>
+        <!--Responsive Menu END-->
+
+        <!-- Kode navigation starts -->
+        <nav class="navigation">
+          <!--Header nav use simple dropdown "use-dropdown" class in li -->
+          <!--example <li class="use-dropdown"> in <ul> <li> <a href="your link"></a> <li> </ul> <li> you create dropdown-->
+          <ul class="nav-menu">
+
+            <li>
+              <a href="#" [routerLink]="['/booking']">{{'HEADER.EVENTS' | translate}}</a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- Kode navigation End -->
+        <div class="kode_button">
+          <button type="button" class="btn-small" *ngIf="!login" (click)="go('/login')">{{'HEADER.LOGIN' | translate}}</button>
+          <button type="button" class="btn-small" *ngIf="login && login.role == 'user'" (click)="go('/personal/events')">{{'HEADER.PERSONAL' | translate}}</button>
+          <button type="button" class="btn-small" *ngIf="login && login.role == 'operator'" (click)="go('/operator/events')">{{'HEADER.OPERATE' | translate}}</button>
+          <button type="button" class="btn-small" *ngIf="login && login.role == 'admin'" (click)="go('/admin/events')">{{'HEADER.ADMIN' | translate}}</button>
+        </div>
+        <!-- Modal -->
+        <div id="form02" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <h3 class="modal-title">Donate</h3>
+              </div>
+              <div class="modal-body">
+                <div class="eco-choose-donation">
+                  <h5 class="eco_sm_titles">Choose the ammount</h5>
+                  <form>
+                    <div class="row">
+                      <ul class="eco_donations_select">
+                        <li class="col-md-3">
+                          <div class="kode_radio_style">
+                            <label>
+                              <input type="radio" name="blue">
+                              <span></span>
+                              <small>I want to Donate</small>
+                              <small class="amount-heading">$100</small>
+                            </label>
+                          </div>
+                        </li>
+                        <li class="col-md-3">
+                          <div class="kode_radio_style">
+                            <label>
+                              <input type="radio" name="blue">
+                              <span></span>
+                              <small>I want to Donate</small>
+                              <small class="amount-heading">$200</small>
+                            </label>
+                          </div>
+                        </li>
+                        <li class="col-md-3">
+                          <div class="kode_radio_style">
+                            <label>
+                              <input type="radio" name="blue">
+                              <span></span>
+                              <small>I want to Donate</small>
+                              <small class="amount-heading">$300</small>
+                            </label>
+                          </div>
+                        </li>
+                        <li class="col-md-3">
+                          <div class="kode_radio_style">
+                            <label class="other">
+                              <input type="radio" name="blue">
+                              <span></span>
+                              <small>I want to Donate</small>
+                            </label>
+                            <div class="eco_enter_ammount">
+                              <input type="text" placeholder="Enter Ammount">
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="eco_donor_information">
+                      <h5 class="eco_sm_titles">donor information</h5>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <input class="input_donate_style" type="text" placeholder="First Name *">
+                        </div>
+                        <div class="col-md-6">
+                          <input class="input_donate_style" type="text" placeholder="Last Name *">
+                        </div>
+                        <div class="col-md-6">
+                          <input class="input_donate_style" type="text" placeholder="Email *">
+                        </div>
+                        <div class="col-md-6">
+                          <input class="input_donate_style" type="text" placeholder="Phone *">
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="eco_importer donate_select_style">
+                            <select class="kode-selecter">
+                              <option>Choose your Country</option>
+                              <option>Select Compaign or Cause</option>
+                              <option>Select Compaign or Cause</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="eco_importer donate_select_style">
+                            <select class="kode-selecter">
+                              <option>State</option>
+                              <option>Select Compaign or Cause</option>
+                              <option>Select Compaign or Cause</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <input class="input_donate_style" type="text" placeholder="City *">
+                        </div>
+                        <div class="col-md-6">
+                          <input class="input_donate_style" type="text" placeholder="Postal Code *">
+                        </div>
+                        <div class="col-md-6">
+                          <input class="input_donate_style" type="text" placeholder="Address *">
+                        </div>
+                        <div class="col-md-6">
+                          <input class="input_donate_style" type="text" placeholder="Address 2 ( Optional)">
+                        </div>
+                        <div class="col-md-12">
+                          <div class="kode_checkbox_style donate_checkbox_style">
+                            <label>
+                              <input type="checkbox">
+                              <span></span>
+                              <small>Please do not publish my name. I would like to remain anonymous.</small>
+                            </label>
+                          </div>
+                          <div class="eco_donate_button">
+                            <button type="submit" class="mediem_btn_02 t_bg">donate now</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--Header nav row ends-->
+    </div>
+  </div>
+</header>
+<!--Header ends-->
