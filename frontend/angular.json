@@ -21,10 +21,21 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/i18n"
+              "src/assets/i18n",
+              "src/assets/images",
+              "src/assets/extra-images",
+              "src/assets/fonts"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/chosen.min.css",
+              "src/assets/css/colors.css",
+              "src/assets/css/font-awesome.css",
+              "src/assets/css/responsive.css",
+              "src/assets/css/shortcodes.css",
+              "src/assets/css/svg-icons.css",
+              "src/assets/css/typography.css"
             ],
             "scripts": []
           },
