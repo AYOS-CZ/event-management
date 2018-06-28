@@ -1,3 +1,4 @@
+import { EventBookingModule } from './event-booking/event-booking.module';
 import { UserPanelModule } from './user-panel/user-panel.module';
 import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { SharedModule } from './shared/shared.module';
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminPanelModule,
     UserPanelModule,
     UtilsModule,
+    EventBookingModule,
 
     RouterModule.forRoot(routes),
     TranslateModule.forRoot({

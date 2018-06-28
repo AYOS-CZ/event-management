@@ -33,14 +33,14 @@
               </div>
               <div class="kode-email-account">
                 <label>
-                  <input type="text" formControlName="email" placeholder="{{'LOGIN.EMAIL' | translate}}">
                   <span class="error" *ngIf="!loginForm.controls.email?.pristine && loginForm.controls.email?.errors?.required">{{'COMMON.IS_REQUIRED'}}</span>
-                  <span class="error" *ngIf="!loginForm.controls.email?.pristine && loginForm.controls.email?.errors?.email">{{'COMMON.EMAIL_INVALID'}}</span>
+                  <span class="error" *ngIf="!loginForm.controls.email?.pristine && loginForm.controls.email?.errors?.pattern">{{'COMMON.EMAIL_INVALID'}}</span>
+                  <input type="text" formControlName="email" placeholder="{{'LOGIN.EMAIL' | translate}}">
                 </label>
                 <label>
-                  <input type="password" formControlName="password" placeholder="{{'LOGIN.PASSWORD' | translate}}">
                   <span class="error" *ngIf="!loginForm.controls.password?.pristine && loginForm.controls.password?.errors?.required">{{'COMMON.IS_REQUIRED'}}</span>
                   <span class="error" *ngIf="!loginForm.controls.password?.pristine && loginForm.controls.password?.errors?.minlength">{{'COMMON.TOO_SHORT'}}</span>
+                  <input type="password" formControlName="password" placeholder="{{'LOGIN.PASSWORD' | translate}}">
                 </label>
               </div>
               <div class="kode_checkbox_style login_registor-style">

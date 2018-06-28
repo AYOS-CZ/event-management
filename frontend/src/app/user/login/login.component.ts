@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { UserService } from '../user.service';
 import { User } from '../user';
 
+export const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.email, Validators.required]],
+      email: ['', [Validators.pattern(EMAIL_PATTERN), Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }

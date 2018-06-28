@@ -1,0 +1,19 @@
+.event_listing_style {
+    cursor: pointer;
+}
+
+.soldout {
+    opacity: .3;
+    cursor: default;
+}
+.soldout:hover {
+    background-color:white;
+}
+
+a.sold_out {
+    color: red;
+}
+
+.booking_button {
+    text-align:center;
+}

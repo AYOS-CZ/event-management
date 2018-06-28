@@ -1,3 +1,4 @@
+import { ApiService } from './../../shared/api.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user/user.service';
 import { User } from '../../user/user';
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private user: UserService,
-    private router: Router
+    private router: Router,
+    private api: ApiService
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,12 @@ export class HeaderComponent implements OnInit {
 
   go(url: string) {
     this.router.navigateByUrl(url);
+  }
+
+  logout() {
+    this.user.logout();
+    this.api.logout();
+    this.router.navigateByUrl('/home')
   }
 
 }

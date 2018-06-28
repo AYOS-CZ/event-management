@@ -1,3 +1,5 @@
+import { EventBookingOrderComponent } from './event-booking/event-booking-order/event-booking-order.component';
+import { EventBookingListComponent } from './event-booking/event-booking-list/event-booking-list.component';
 import { AccountComponent } from './user/account/account.component';
 import { AuthGuardOperatorService } from './shared/auth-guard-operator.service';
 import { EventListOperatorComponent } from './operator-panel/event-list/event-list.component';
@@ -32,6 +34,10 @@ export const routes: Route[] = [
     { path: 'signup', component: SignupComponent},
     { path: 'personal/account', component: AccountComponent, canActivate: [AuthGuardAdminService, AuthGuardOperatorService, AuthGuardService] },
 
+     //event booking
+     { path: 'booking', component: EventBookingListComponent },
+     { path: 'booking/order', component: EventBookingOrderComponent },
+
     //admin panel
     { path: 'admin/lectures/:id', component: LectureDetailComponent, canActivate: [AuthGuardAdminService] },
     { path: 'admin/lectures', component: LectureListComponent, canActivate: [AuthGuardAdminService]},
@@ -42,7 +48,6 @@ export const routes: Route[] = [
     { path: 'admin/events/:id', component: EventDetailComponent, canActivate: [AuthGuardAdminService] },
     { path: 'admin/events', component: EventListComponent, canActivate: [AuthGuardAdminService]},
     { path: 'admin/events/new', component: CreateEventComponent, canActivate: [AuthGuardAdminService]},
-
 
     //operator panel
     { path: 'operator/events/:id', component: EventListOperatorComponent, canActivate: [AuthGuardOperatorService] },

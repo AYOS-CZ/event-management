@@ -102,4 +102,9 @@ export class ApiService {
     this.token = token;
     this.headers.append('Authorisation', token);
   }
+
+  logout() {
+    this.token = null;
+    this.headers = new HttpHeaders();
+  }
 }

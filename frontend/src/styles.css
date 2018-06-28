@@ -3563,6 +3563,9 @@ blockquote p:after{
 	z-index: -1;
 }
 .event_listing_style:hover:after{
+	opacity: 0.1;
+}
+.event_listing_style.checked:after{
 	opacity: 0.7;
 }
 .event_listing_style:hover:before{
@@ -3612,7 +3615,7 @@ blockquote p:after{
     top: 33px;
 }
 .event_listing_style .event_date_02{
-	padding: 35px 20px 0 0;
+	padding: 18px 20px 0 0;
 	font-size: 36px;
 }
 .event_listing_style .event_date_02 b{
@@ -3637,6 +3640,18 @@ blockquote p:after{
 .event_listing_style:hover .eco_event_content p{
 	color:#fff;
 }
+
+.event_listing_style.checked .event_meta .eco_share i,
+.event_listing_style.checked .eco-event-title p i,
+.event_listing_style.checked .event_meta li p a,
+.event_listing_style.checked .event_meta li small,
+.event_listing_style.checked .event_meta a,
+.event_listing_style.checked .eco-event-title h5,
+.event_listing_style.checked .eco-event-title .eco_address_marker,
+.event_listing_style.checked .eco_event_content p{
+	color:#fff;
+}
+
 /*
 =============================================
 	Eco comming soon
@@ -6422,6 +6437,12 @@ blockquote p:after{
 }
 
 
-button:disabled {
+:disabled {
     opacity: .3;
+}
+
+span.error {
+    color: red;
+    font-size: 9px;
+    line-height: 9px;
 }

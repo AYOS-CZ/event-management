@@ -1,3 +1,33 @@
-<p>
-  unauthorized works!
-</p>
+
+		<!--Eco Template Banner-->
+		<div class="eco_banner eco_inner_page_banner">
+        <!--Eco Template Banner img-->
+        <div class="eco_headings">
+          <h3>{{'UNAUTHORIZED.HEADER' | translate}}</h3>
+        </div>
+        <ul class="eco_page_link">
+          <li class="active"><a href="#" [routerLink]="['/login']">{{'LOGIN.LOGIN' | translate}}</a></li>
+          <li class="active"><a href="#" [routerLink]="['/signup']">{{'LOGIN.REGISTRATION' | translate}}</a></li>
+        </ul>
+      </div>
+      <!--Eco Template Banner ends-->
+  
+      <!--Eco Template content-->
+      <div class="content">
+        <section class="eco_404-page">
+          <div class="container">
+            <div class="page_not_found">
+              <div class="eco_headings eco-big-title">
+                <h3><b>{{'UNAUTHORIZED.H2_P1' | translate}}</b> {{'UNAUTHORIZED.H2_P2' | translate}}</h3>
+                <p>{{'UNAUTHORIZED.DESCRIPTION' | translate}}</p>
+              </div>
+              <!-- <form> -->
+                              
+                            <button class="spacial-btn" type="submit" [routerLink]="['/login']">{{'LOGIN.LOGIN' | translate}}</button>
+                          <!-- </form> -->
+            </div>
+          </div>
+        </section>
+      </div>
+      <!--Eco content ends-->
+      

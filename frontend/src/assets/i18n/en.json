@@ -3,7 +3,10 @@
 		"OK": "Ok"
 	},
 	"HEADER": {
-		"LOGIN": "Log In"
+		"LOGIN": "Log In",
+		"HELLO": "Hello",
+		"PERSONAL": "Personal",
+		"LOG_OUT": "Log Out"
 	},
 	"LOGIN": {
 		"HEADER": "Log In",
@@ -12,5 +15,20 @@
 	},
 	"SIGNUP": {
 		"HEADER": "Sign Up"
+	},
+	"BOOKING_LIST": {
+		"AVAILABLE": "Open",
+		"HEADER": "Book Events",
+		"SOLD_OUT": "Sold Out",
+		"CHECKOUT": "Finalize"
+	},
+	"BOOKING_ORDER": {
+		"HEADER": "Finalize your booking"
+	},
+	"UNAUTHORIZED": {
+		"HEADER": "Unauthorized",
+		"H2_P1": "Access",
+		"H2_P2": "Restricted",
+		"DESCRIPTION": "We have detected that you are not authorized to see this page. We are very sorry! Maybe you need to log in?"
 	}
 }
