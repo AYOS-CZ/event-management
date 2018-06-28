@@ -35,7 +35,8 @@
               "src/assets/css/responsive.css",
               "src/assets/css/shortcodes.css",
               "src/assets/css/svg-icons.css",
-              "src/assets/css/typography.css"
+              "src/assets/css/typography.css",
+              "src/assets/css/component.css"
             ],
             "scripts": []
           },
