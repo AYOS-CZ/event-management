@@ -28,7 +28,7 @@ export class ApiService {
   post(endpoint: string, data: any, customErrorHandler = null) {
     return new Observable(observer => {
       if (CONFIG.isMock) {
-        this.mock[endpoint].subscribe(res => {
+        this.mock[endpoint]().subscribe(res => {
           observer.next(res);
         }, err => this.handleError);
       } else {
@@ -36,7 +36,7 @@ export class ApiService {
           observer.next(res);
         }, err => {
           if(customErrorHandler) customErrorHandler(err);
-          else this.handleError(err);
+          else this.handleError(err, observer);
         });
       }
     })
@@ -45,7 +45,7 @@ export class ApiService {
   get(endpoint: string, customErrorHandler = null) {
     return new Observable(observer => {
       if (CONFIG.isMock) {
-        this.mock[endpoint].subscribe(res => {
+        this.mock[endpoint]().subscribe(res => {
           observer.next(res);
         }, err => this.handleError);
       } else {
@@ -53,7 +53,7 @@ export class ApiService {
           observer.next(res);
         }, err => {
           if(customErrorHandler) customErrorHandler(err);
-          else this.handleError(err);
+          else this.handleError(err, observer);
         });
       }
     })
@@ -62,7 +62,7 @@ export class ApiService {
   put(endpoint: string, id: string, data: any, customErrorHandler = null) {
     return new Observable(observer => {
       if (CONFIG.isMock) {
-        this.mock[endpoint].subscribe(res => {
+        this.mock[endpoint]().subscribe(res => {
           observer.next(res);
         }, err => this.handleError);
       } else {
@@ -70,7 +70,7 @@ export class ApiService {
           observer.next(res);
         }, err => {
           if(customErrorHandler) customErrorHandler(err);
-          else this.handleError(err);
+          else this.handleError(err, observer);
         });
       }
     })
@@ -79,7 +79,7 @@ export class ApiService {
   delete(endpoint: string, id: string, customErrorHandler = null) {
     return new Observable(observer => {
       if (CONFIG.isMock) {
-        this.mock[endpoint].subscribe(res => {
+        this.mock[endpoint]().subscribe(res => {
           observer.next(res);
         }, err => this.handleError);
       } else {
@@ -87,14 +87,15 @@ export class ApiService {
           observer.next(res);
         }, err => {
           if(customErrorHandler) customErrorHandler(err);
-          else this.handleError(err);
+          else this.handleError(err, observer);
         });
       }
     })
   }
 
-  handleError(error: any) {
+  handleError(error: any, observer) {
     this.notifications.showError(error.message);
+    observer.error(error.message);
   }
 
   setAuth(token) {

@@ -857,6 +857,14 @@ section{
 	color:#b2b2b2;
 	text-shadow:1px 0 0 #b2b2b2;
 }
+.kode-email-account input[type="password"] {
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #b2b2b2;
+    text-shadow: 1px 0 0 #b2b2b2;
+}
 .eco-forgot-account{
 	display: inline-block;
     margin-bottom: 15px;
@@ -6411,4 +6419,9 @@ blockquote p:after{
     right: 0px;
 	color:#fff;
 	font-size:20px;
+}
+
+
+button:disabled {
+    opacity: .3;
 }

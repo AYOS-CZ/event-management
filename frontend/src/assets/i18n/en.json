@@ -1,5 +1,16 @@
 {
 	"COMMON": {
 		"OK": "Ok"
+	},
+	"HEADER": {
+		"LOGIN": "Log In"
+	},
+	"LOGIN": {
+		"HEADER": "Log In",
+		"LOGIN": "Log In",
+		"REGISTRATION": "Sign Up"
+	},
+	"SIGNUP": {
+		"HEADER": "Sign Up"
 	}
 }

@@ -5,6 +5,7 @@ import {
     RouterStateSnapshot,
     Router
 } from '@angular/router';
+import { User } from '../user/user';
 
 @Injectable()
 export class AuthGuardOperatorService implements CanActivate {
@@ -15,11 +16,17 @@ export class AuthGuardOperatorService implements CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ) {
-        let auth = localStorage.getItem('auth');
-        if (auth && auth == 'operator') {            
+        let auth: User;
+        try {
+            auth = JSON.parse(localStorage.getItem('auth'));
+        } catch (e) {
+            console.error('auth could not be parsed!');
+        }
+        
+        if (auth && auth.role == 'operator') {            
             return true;
         } else {
-            this.router.navigateByUrl('/auth-placeholder');
+            this.router.navigateByUrl('/unauthorized');
             return false;
         }
     }

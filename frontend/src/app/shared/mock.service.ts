@@ -12,16 +12,17 @@ export class MockService {
 
   wrapper(data) {
     return new Observable(observer => {
+      console.log('returning data from mock wrapper', data);
       observer.next(data);
     })
   }
 
   login() {
-    return this.wrapper({result: true, token: 'some_jwt_token', first_name: 'John', last_name: 'Doe', date_of_birth: 760303828, email: 'johndoe@gmail.com', phone: '+79197621370'})
+    return this.wrapper({token: 'some_jwt_token', first_name: 'John', last_name: 'Doe', date_of_birth: 760303828, email: 'johndoe@gmail.com', phone: '+79197621370', role: 'user', validated: false})
   } 
 
   serverError () {
-    return this.wrapper({result: false, message: 'RANDOM_SERVER_ERROR'});
+    return this.wrapper({message: 'COMMON.RANDOM_SERVER_ERROR'});
   }
 
   logout() {
