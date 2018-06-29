@@ -17,11 +17,106 @@
         <!--Eco row-->
         <div class="row">
           <!--Eco column-->
-          <div class="col-md-2"></div>
-          <div class="col-md-9 col-sm-12 responsive-991-width booking_list">
-            <h1>EVENTS CHOSEN:</h1><br/>{{chosenEvents | json}}
+          <div class="col-md-12 col-sm-12 responsive-991-width booking_list">
+            <div class="row">
+              <!--Eco column-->
+              <div class="col-md-12 responsive-float col-sm-12 responsive-991-width">
+                <!--Eco Template section-->
+                <div class="eco_blog_detail_post eco_event_detail_post">
+                  <!--Eco column img-->
+                  <div class="row event" *ngFor="let event of events">
+                    <!--Eco column img event_slider-->
+                    <div class="eco_events_images">
+                      <div class="col-md-12 col-sm-12 col-xs-12 responsive-991-width event-inner">
+                        <div class="event-meta">
+                          {{event.location}}, {{event.street}}, {{event.date | date: 'medium'}}
+                        </div>
+                        <!--Eco column event_slider -->
+                        <div class="eco_big_event event_for">
+                          <!--Eco event_slider item-->
+                          <div class="slider_div">
+                            <figure>
+                              <!--Eco event_slider countdown-->
+                              <div class="date_tag">
+                                <ul class="countdown">
+                                  <li class="event_date">
+                                    <span class="days">{{event?.countdown?.days}}</span>
+                                    <p class="">{{'BOOKING_ORDER.DAYS' | translate}}</p>
+                                  </li>
+                                  <li class="event_date">
+                                    <span class="hours">{{event?.countdown?.hours}}</span>
+                                    <p class="">{{'BOOKING_ORDER.HOURS' | translate}}</p>
+                                  </li>
+                                  <li class="event_date">
+                                    <span class="minutes">{{event?.countdown?.minutes}}</span>
+                                    <p class="">{{'BOOKING_ORDER.MINUTES' | translate}}</p>
+                                  </li>
+                                  <li class="event_date">
+                                    <span class="seconds">{{event?.countdown?.seconds}}</span>
+                                    <p class="">{{'BOOKING_ORDER.SECONDS' | translate}}</p>
+                                  </li>
+                                </ul>
+                              </div>
+
+                              <div class="row inner-booking">
+                                <div class="healing" [class.col-md-6]="event?.subEvents?.lecture" [class.col-md-12]="!event?.subEvents?.lecture">
+                                  <h4>{{'BOOKING_ORDER.HEALING' | translate}}</h4>
+                                  <div class="info-wrapper">
+                                    <div class="info">
+                                      <span class="key">{{'BOOKING_ORDER.PRICE_PER_SESSION' | translate}}</span>
+                                      <span class="val">{{event?.subEvents?.healing?.price}} {{event?.subEvents?.healing?.currency}}</span>
+                                    </div>
+                                    <div class="info">
+                                      <span class="key">{{'BOOKING_ORDER.AVAILABLE_SLOTS' | translate}}</span>
+                                      <span class="val">{{event?.subEvents?.healing?.availableSlots}}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 lecture" [class.booked]="event?.subEvents?.lecture?.checked" *ngIf="event?.subEvents?.lecture">
+                                  <h4>{{'BOOKING_ORDER.LECTURE' | translate}}</h4>
+                                  <div class="info-wrapper">
+                                    <div class="info">
+                                      <span class="key">{{'BOOKING_ORDER.LECTURER' | translate}}</span>
+                                      <span class="val">{{event?.subEvents?.lecture?.lecturer?.name}}</span>
+                                    </div>
+                                    <div class="info">
+                                      <span class="key">{{'BOOKING_ORDER.PRICE' | translate}}</span>
+                                      <span class="val">{{event?.subEvents?.lecture?.price}} {{event?.subEvents?.lecture?.currency}}</span>
+                                    </div>
+                                    <div class="info">
+                                      <span class="key">{{'BOOKING_ORDER.AVAILABLE_SLOTS' | translate}}</span>
+                                      <span class="val">{{event?.subEvents?.lecture?.availableSlots}}</span>
+                                    </div>
+                                  </div>
+                                  <a (click)="checkLecture(event?.subEvents?.lecture, event)" *ngIf="!event?.subEvents?.lecture?.checked" class="lecture_book" href="javascript:void(0)">{{'BOOKING_ORDER.BOOK' | translate}}</a>
+                                  <a (click)="checkLecture(event?.subEvents?.lecture, event)" *ngIf="event?.subEvents?.lecture?.checked" class="lecture_book checked" href="javascript:void(0)">{{'BOOKING_ORDER.BOOKED' | translate}}</a>
+                                </div>
+                              </div>
+                              <div class="row inner-booking">
+                                <a (click)="checkSlot(interval, event)" *ngFor="let interval of event?.subEvents?.healing?.intervals" [class.chosen_slot]="interval.checked"
+                                  [class.taken_slot]="!interval.availableSlots" [class.mediem_btn_02]="interval.availableSlots"
+                                  [class.tcolor]="interval.availableSlots" href="javascript:void(0)">{{interval.start}}-{{interval.end}}</a>
+                              </div>
+                              <!--Eco event_slider end-->
+                            </figure>
+                          </div>
+                          <!--Eco event_slider item ends-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row checkout">
+              <h4>{{'BOOKING_ORDER.CHECKOUT' | translate}}</h4>
+              <div class="part" *ngFor="let part of order.parts">
+                <span>{{part.type}} {{part.event.location}} {{part.event.date | date: 'medium'}}</span>
+                <span class="part-price">{{part.price}} {{part.currency}}</span>
+              </div>
+              <div class="total">{{'BOOKING_ORDER.TOTAL' | translate}} {{order.total}} {{order.currency}}</div>
+            </div>
           </div>
-          <div class="col-md-2"></div>
         </div>
       </div>
     </div>

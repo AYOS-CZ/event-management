@@ -23,7 +23,20 @@
 		"CHECKOUT": "Finalize"
 	},
 	"BOOKING_ORDER": {
-		"HEADER": "Finalize your booking"
+		"HEADER": "Finalize your booking",
+		"DAYS": "Days",
+		"MINUTES": "Minutes",
+		"HOURS": "Hours",
+		"SECONDS": "Seconds",
+		"LECTURE": "Lecture",
+		"HEALING": "Healing",
+		"AVAILABLE_SLOTS": "Available",
+		"PRICE": "Price",
+		"PRICE_PER_SESSION": "Price per session",
+		"LECTURER": "Lecturer",
+		"LECTURE_TITLE": "Topic",
+		"BOOK": "Book",
+		"BOOKED": "Booked"
 	},
 	"UNAUTHORIZED": {
 		"HEADER": "Unauthorized",

@@ -17,4 +17,8 @@ export class EventBookingService {
   getList() {
     return this.api.get('bookingList');
   }
+
+  getDetailed(ids) {
+    return this.api.post('bookingDetail', {ids: ids})
+  }
 }
