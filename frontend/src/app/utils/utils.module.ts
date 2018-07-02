@@ -1,3 +1,4 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
@@ -7,16 +8,22 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
+import { LoginOrContactComponent } from './login-or-contact/login-or-contact.component';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    UserModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginOrContactComponent
   ],
-  declarations: [UnauthorizedComponent, HomeComponent, ConfirmationComponent, NotificationsComponent, HeaderComponent, FooterComponent]
+  declarations: [UnauthorizedComponent, HomeComponent, ConfirmationComponent, NotificationsComponent, HeaderComponent, FooterComponent, LoginOrContactComponent]
 })
 export class UtilsModule { }

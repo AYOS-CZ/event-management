@@ -5,7 +5,8 @@
     overflow: hidden;
     position: relative;
     border-radius: 10px;
-    background-color: #ccc;
+    /* background-color: #ccc; */
+    border: 2px solid #7abf18;
 }
 .event-inner {
     /* border-bottom: 3px solid #7abf19; */
@@ -36,12 +37,12 @@ a.taken_slot {
     width: 156px;
     height: 40px;
     border-radius: 30px;
-    border: 2px solid #fff;
+    border: 2px solid #7abf18;
     line-height: 36px;
     display: inline-block;
     font-size: 14px;
     font-weight: 600;
-    color: #fff;
+    color: #7abf18;
     text-align: center;
     text-transform: uppercase;
     opacity: 0.4;
@@ -59,6 +60,7 @@ a.taken_slot {
 }
 .chosen_slot {
     color: #014c8c !important;
+    border-color: #014c8c !important;
     background-color: #7abf18;
 }
 
@@ -71,14 +73,14 @@ a.taken_slot {
 }
 
 .lecture {
-    border-left: 2px solid white;
-    border-bottom: 2px solid white;
+    border-left: 2px solid #7abf18;
+    border-bottom: 2px solid #7abf18;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
 .lecture.booked {
-    background-color: #7abf194f;
+    /* background-color: #7abf194f; */
 }
 
 .lecture h4 {
@@ -153,7 +155,7 @@ a.taken_slot {
 }
 
 .info {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #014c8c;
     border-bottom-right-radius: 7px;
     display: inherit;
     margin-top: 5px;
@@ -162,7 +164,7 @@ a.taken_slot {
 
 .info .key {
     font-weight: bold;
-    color: white;
+    color: #104c89;
 }
 .info span.val {
     float: right;
@@ -176,16 +178,38 @@ a.taken_slot {
     text-align: center;
     height: 30px;
     line-height: 30px;
-    background-color: white;
+    /* background-color: #7abf18; */
+    /* border-top: 2px solid #7abf18; */
     margin-top: 8px;
 }
 
+.booking_error {
+    color: red;
+}
+
+.book_button {
+    width: 100%;
+    background-color: #7abf19;
+    color: white;
+}
+
+.book_button:hover {
+    background-color: black;
+}
+
+.eco_widget_list_style li a:before {
+    display: none;
+}
+
 .lecture_book:hover {
-    opacity: .7;
+    /* background-color: #7abf18; */
+    font-weight: bold;
 }
 
 .lecture_book.checked {
     background-color: #7abf19;
+    color: #104c89;
+    font-weight: bold;
 }
 
 .part-price {

@@ -1,12 +1,14 @@
 {
 	"COMMON": {
-		"OK": "Ok"
+		"OK": "Ok",
+		"HELLO": "Glad to have you back"
 	},
 	"HEADER": {
 		"LOGIN": "Log In",
 		"HELLO": "Hello",
 		"PERSONAL": "Personal",
-		"LOG_OUT": "Log Out"
+		"LOG_OUT": "Log Out",
+		"EVENTS": "Events"
 	},
 	"LOGIN": {
 		"HEADER": "Log In",
@@ -14,7 +16,13 @@
 		"REGISTRATION": "Sign Up"
 	},
 	"SIGNUP": {
-		"HEADER": "Sign Up"
+		"HEADER": "Sign Up",
+		"HAVE_ACCOUNT": "Have an account?",
+		"LOGIN_NOW": "Login now!",
+		"FIRST_NAME": "First Name",
+		"LAST_NAME": "Last Name",
+		"PHONE": "Phone number",
+		"EMAIL": "Email"
 	},
 	"BOOKING_LIST": {
 		"AVAILABLE": "Open",
@@ -36,12 +44,19 @@
 		"LECTURER": "Lecturer",
 		"LECTURE_TITLE": "Topic",
 		"BOOK": "Book",
-		"BOOKED": "Booked"
+		"BOOKED": "Lecture Booked",
+		"CHECKOUT": "Check Out",
+		"TOTAL": "Total",
+		"NONE": "Please choose suitable intervals"
 	},
 	"UNAUTHORIZED": {
 		"HEADER": "Unauthorized",
 		"H2_P1": "Access",
 		"H2_P2": "Restricted",
 		"DESCRIPTION": "We have detected that you are not authorized to see this page. We are very sorry! Maybe you need to log in?"
+	},
+	"LOGIN_OR_CONTACT": {
+		"HEADER": "Contacts",
+		"HEADER_2": "Order Details"
 	}
 }

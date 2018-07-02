@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="widget_post_content">
+
+      <ng-template [ngIf]="auth && auth.role">
+        <h5 class="eco_sm_titles">{{'LOGIN_OR_CONTACT.WELCOME_BACK' | translate}} {{auth.firstName}} {{auth.lastName}}
+        </h5>
+      </ng-template>
+      <ng-template [ngIf]="!auth || !auth.role">
+        <ng-template [ngIf]="!haveAccount">
+          <h5 class="eco_sm_titles">{{'LOGIN_OR_CONTACT.HEADER' | translate}}
+          </h5>
+          <form [formGroup]="contactForm" #contactFormEl="ngForm">
+
+            <div class="kode-email-account">
+              <label>
+                <input type="text" formControlName="firstName" placeholder="{{'SIGNUP.FIRST_NAME' | translate}}">
+                <span class="error" *ngIf="!contactForm.controls.firstName?.pristine && contactForm.controls.firstName?.errors?.required">{{'COMMON.IS_REQUIRED'}}</span>                
+              </label>
+              <label>
+                <input type="text" formControlName="lastName" placeholder="{{'SIGNUP.LAST_NAME' | translate}}">
+                <span class="error" *ngIf="!contactForm.controls.lastName?.pristine && contactForm.controls.lastName?.errors?.required">{{'COMMON.IS_REQUIRED'}}</span>
+              </label>
+              <label>
+                <input type="text" formControlName="email" placeholder="{{'SIGNUP.EMAIL' | translate}}">
+                <span class="error" *ngIf="!contactForm.controls.email?.pristine && contactForm.controls.email?.errors?.required">{{'COMMON.IS_REQUIRED'}}</span>
+                <span class="error" *ngIf="!contactForm.controls.email?.pristine && contactForm.controls.email?.errors?.pattern">{{'COMMON.EMAIL_INVALID'}}</span>
+              </label>
+              <label>                  
+                <input type="text" formControlName="phone" placeholder="{{'SIGNUP.PHONE' | translate}}">
+                <span class="error" *ngIf="!contactForm.controls.phone?.pristine && contactForm.controls.phone?.errors?.required">{{'COMMON.IS_REQUIRED'}}</span>
+              </label>
+            </div>
+
+            <div class="login-user">
+              <p>{{'SIGNUP.HAVE_ACCOUNT' | translate}}
+                <a href="javascript:void(0)" (click)="haveAccount = true">{{'SIGNUP.LOGIN_NOW' | translate}}</a>
+              </p>
+            </div>
+          </form>
+        </ng-template>
+        <ng-template [ngIf]="haveAccount">
+            <h5 class="eco_sm_titles">{{'LOGIN.HEADER' | translate}}
+              </h5>
+              <app-login-inner *ngIf="haveAccount" (responseSuccess)="loggedIn($event)" [embed]="true"></app-login-inner>
+        </ng-template>
+        
+        
+        <h5 class="eco_sm_titles title2">{{'LOGIN_OR_CONTACT.HEADER_2' | translate}}
+          </h5>
+      </ng-template>
+    </div>
+  </div>

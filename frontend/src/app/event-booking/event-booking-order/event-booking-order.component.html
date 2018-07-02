@@ -14,10 +14,12 @@
     <div class="eco_blog_detail">
       <!--Eco container-->
       <div class="container">
+
+          <app-login-or-contact (result)="contactChanged($event)"></app-login-or-contact>
         <!--Eco row-->
         <div class="row">
           <!--Eco column-->
-          <div class="col-md-12 col-sm-12 responsive-991-width booking_list">
+          <div class="col-md-9 col-sm-12 responsive-991-width booking_list">
             <div class="row">
               <!--Eco column-->
               <div class="col-md-12 responsive-float col-sm-12 responsive-991-width">
@@ -88,14 +90,16 @@
                                       <span class="val">{{event?.subEvents?.lecture?.availableSlots}}</span>
                                     </div>
                                   </div>
-                                  <a (click)="checkLecture(event?.subEvents?.lecture, event)" *ngIf="!event?.subEvents?.lecture?.checked" class="lecture_book" href="javascript:void(0)">{{'BOOKING_ORDER.BOOK' | translate}}</a>
-                                  <a (click)="checkLecture(event?.subEvents?.lecture, event)" *ngIf="event?.subEvents?.lecture?.checked" class="lecture_book checked" href="javascript:void(0)">{{'BOOKING_ORDER.BOOKED' | translate}}</a>
+                                  <a (click)="checkLecture(event?.subEvents?.lecture, event)" *ngIf="!event?.subEvents?.lecture?.checked" class="lecture_book"
+                                    href="javascript:void(0)">{{'BOOKING_ORDER.BOOK' | translate | uppercase}}</a>
+                                  <a (click)="checkLecture(event?.subEvents?.lecture, event)" *ngIf="event?.subEvents?.lecture?.checked" class="lecture_book checked"
+                                    href="javascript:void(0)">{{'BOOKING_ORDER.BOOKED' | translate | uppercase}}</a>
                                 </div>
                               </div>
                               <div class="row inner-booking">
                                 <a (click)="checkSlot(interval, event)" *ngFor="let interval of event?.subEvents?.healing?.intervals" [class.chosen_slot]="interval.checked"
                                   [class.taken_slot]="!interval.availableSlots" [class.mediem_btn_02]="interval.availableSlots"
-                                  [class.tcolor]="interval.availableSlots" href="javascript:void(0)">{{interval.start}}-{{interval.end}}</a>
+                                  [class.tcolor]="interval.availableSlots" [class.green]="interval.availableSlots" href="javascript:void(0)">{{interval.start}}-{{interval.end}}</a>
                               </div>
                               <!--Eco event_slider end-->
                             </figure>
@@ -108,13 +112,68 @@
                 </div>
               </div>
             </div>
-            <div class="row checkout">
-              <h4>{{'BOOKING_ORDER.CHECKOUT' | translate}}</h4>
-              <div class="part" *ngFor="let part of order.parts">
-                <span>{{part.type}} {{part.event.location}} {{part.event.date | date: 'medium'}}</span>
-                <span class="part-price">{{part.price}} {{part.currency}}</span>
+
+          </div>
+          <div class="col-md-3 col-sm-12 col-xs-12 responsive-991-width">
+            <div class="margin-buttom_50 responsive-column responsive-devider-50">
+
+              <div class="margin-buttom_50 responsive-column responsive-devider-50">
+                <div class="widget_post_content">
+                  <h5 class="eco_sm_titles">{{'BOOKING_ORDER.CHECKOUT' | translate}}</h5>
+                  <!--Eco archives column posts-->
+
+                  <ul class="eco_widget_list_style">
+                    <!--Eco  archives column post-->
+                    <div class="total" *ngIf="!order.parts.length">{{'BOOKING_ORDER.NONE' | translate}}</div>
+                    <li *ngFor="let part of order.parts">
+                      <a href="#">{{'BOOKING_ORDER.'+part.type | translate}}
+                        <small>{{part.event.location}}</small>
+                        <small>{{part.price}} {{part.currency}}</small>
+                      </a>
+                    </li>
+                  </ul>
+                  <!--Eco recent blog posts ends-->
+                </div>
               </div>
-              <div class="total">{{'BOOKING_ORDER.TOTAL' | translate}} {{order.total}} {{order.currency}}</div>
+
+              <div class="margin-buttom_50 responsive-column responsive-devider-50" *ngIf="order.parts.length">
+                <div class="widget_post_content">
+                  <h5 class="eco_sm_titles">{{'BOOKING_ORDER.TOTAL' | translate}}</h5>
+                  <!--Eco archives column posts-->
+
+                  <div class="total"> {{order.total}} {{order.currency}}</div>
+                </div>
+
+
+              </div>
+              <div class="margin-buttom_50 responsive-column responsive-devider-50" *ngIf="order.parts.length">
+                <div class="widget_post_content">
+                  <a href="javascript:void(0)" class="xsmall-btn btn-small book_button" (click)="book()">{{'BOOKING_ORDER.BOOK' | translate}}</a>
+                  <div class="booking_error" *ngIf="bookingErrors.contact.length"> <span *ngFor="let error of bookingErrors.contact">{{'BOOKING_ORDER.' + error | translate}}<br/></span> </div>
+                  <div class="booking_error" *ngIf="bookingErrors.contact.length"> <span *ngFor="let error of bookingErrors.backend">{{'BOOKING_ORDER.' + error | translate}}<br/></span> </div>
+                  <div class="booking_error" *ngIf="bookingErrors.contact.length"> <span *ngFor="let error of bookingErrors.other">{{'BOOKING_ORDER.' + error | translate}}<br/></span> </div>
+                </div>
+              </div>
+              <!-- <div class="eco-thumb-bg widget_post_slider">
+                <div class="feature_blog_caption">
+                  <h3>{{'BOOKING_ORDER.CHECKOUT' | translate}}</h3>
+                  
+                  <div class="eco-progress-row">
+                    <div class="progress skill-bar">
+                      <span class="eco_progress-heading skill">Funded</span>
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="20"
+                        style="width: 20%;">
+                        <span class="skill">
+                          <i class="val">20%</i>
+                        </span>
+                        <small>3 Days left</small>
+                        <small class="pull-right">Goal: $18,000</small>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" class="mediem_btn_02">donate now</a>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>

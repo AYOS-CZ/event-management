@@ -1,0 +1,32 @@
+h5 b {
+    color: #7abf19
+}
+
+
+label {
+    width: 49%;
+    display: inline-block;
+    margin-right: 1%;
+    position: relative;
+}
+
+.login-user p {
+    color: #2e2e2e;
+}
+
+.login-user p a {
+    color: #7abf18;
+}
+
+span.error {
+    color: red;
+    font-size: 9px;
+    line-height: 9px;
+    position: absolute;
+    left: 2px;
+    top: 51px;
+}
+
+.title2 {
+    margin-top:45px;;
+}

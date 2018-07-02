@@ -1,3 +1,4 @@
+import { UserService } from './../../user/user.service';
 import { EventBookingService } from './../event-booking.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,16 +11,23 @@ import { Router } from '@angular/router';
 export class EventBookingOrderComponent implements OnInit, OnDestroy {
 
   public events = [];
-  public loading = true;
+  public loading: boolean = true;
+  private contactValid: boolean = false;
   private interval;
   public order = {
     total: 0,
     currency: 'EUR',
     parts: []
   }
+  public bookingErrors = {
+    contact: [],
+    backend: [],
+    other: []
+  }
 
   constructor(
     private bookingService: EventBookingService,
+    private user: UserService,
     private router: Router
   ) {
 
@@ -28,9 +36,12 @@ export class EventBookingOrderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.events = this.bookingService.chosenEvents;
     if (!this.events.length) {
-      // this.events = [{ id: 2 }, { id: 3 }]
-      this.router.navigateByUrl('/booking');
+      this.events = [{ id: 2 }, { id: 3 }]
+      // this.router.navigateByUrl('/booking');
     }
+
+    // this.bookingErrors.push("EMAIL_TAKEN");
+    // this.bookingErrors.push("HEALING_TAKEN");
 
     let ids = this.events.map(event => event.id);
     console.log('request detailed events', ids);
@@ -95,11 +106,11 @@ export class EventBookingOrderComponent implements OnInit, OnDestroy {
     this.events.forEach(event => {
       if (event.subEvents.healing) {
         event.subEvents.healing.intervals.forEach(interval => {
-          if (interval.checked) this.order.parts.push({ type: 'healing', price: event.subEvents.healing.price, currency: event.subEvents.healing.currency, time: interval.start + '-' + interval.end, event: event })
+          if (interval.checked) this.order.parts.push({ type: 'HEALING', price: event.subEvents.healing.price, currency: event.subEvents.healing.currency, time: interval.start + '-' + interval.end, event: event })
         })
       }
       if (event.subEvents.lecture) {
-        if (event.subEvents.lecture.checked) this.order.parts.push({ type: 'lecture', price: event.subEvents.lecture.price, currency: event.subEvents.lecture.currency, event: event })        
+        if (event.subEvents.lecture.checked) this.order.parts.push({ type: 'LECTURE', price: event.subEvents.lecture.price, currency: event.subEvents.lecture.currency, event: event })        
       }
     })
     
@@ -122,6 +133,33 @@ export class EventBookingOrderComponent implements OnInit, OnDestroy {
       lecture.checked = !lecture.checked;
     }
     this.calculateOrder();
+  }
+
+  contactChanged(res) {
+    console.log('contactChanged', res);
+    this.contactValid = res;
+    if(!this.contactValid) this.bookingErrors.contact = ['FILL_CONTACT'];
+    else this.bookingErrors.contact = [];
+  }
+
+  book() {
+
+    if(!this.contactValid) this.bookingErrors.contact = ['FILL_CONTACT'];
+    else this.bookingErrors.contact = [];
+
+    //TODO: make a booking POST to backend here
+    //TODO: check for backend response errors here
+    // if(!this.contactValid) this.bookingErrors.contact = ['FILL_CONTACT'];
+    // else this.bookingErrors.contact = [];
+
+    let haveErrors = false;
+    for (const key in this.bookingErrors) {
+      if(this.bookingErrors[key].length) haveErrors = true;
+    }
+
+    if(!haveErrors) {
+      console.log('proceed with booking!');
+    }
   }
 
 }

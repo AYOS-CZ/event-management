@@ -1707,6 +1707,25 @@ section{
     width: 100%;
     z-index:1;
 }
+.mediem_btn_02.tcolor.green {
+	color: #7abf18;
+	border-color: #7abf18;
+}
+.mediem_btn_02.tcolor.green:hover{
+	color:#fff;
+}
+.mediem_btn_02.tcolor.green:before,
+.eco_hover_effect:before {
+    background: rgba(122, 191, 25, 0.5) none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0px, -120%, 0px);
+    width: 100%;
+    z-index:2;
+}
 
 .effective-div {
     backface-visibility: hidden;

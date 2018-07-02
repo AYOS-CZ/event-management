@@ -24,42 +24,7 @@
       <div class="col-md-3"></div>
       <div class="col-md-6">
         <div class="kode_login_social-account white-login-form">
-          <form [formGroup]="loginForm">
-            <div class="eco-login-registration">
-              <div class="eco_title_form">
-                <h3>
-                  <b>{{'LOGIN.H2_P1' | translate}}</b> {{'LOGIN.H2_P2' | translate}}</h3>
-                <p>{{'LOGIN.DESCRIPTION' | translate}}</p>
-              </div>
-              <div class="kode-email-account">
-                <label>
-                  <span class="error" *ngIf="!loginForm.controls.email?.pristine && loginForm.controls.email?.errors?.required">{{'COMMON.IS_REQUIRED'}}</span>
-                  <span class="error" *ngIf="!loginForm.controls.email?.pristine && loginForm.controls.email?.errors?.pattern">{{'COMMON.EMAIL_INVALID'}}</span>
-                  <input type="text" formControlName="email" placeholder="{{'LOGIN.EMAIL' | translate}}">
-                </label>
-                <label>
-                  <span class="error" *ngIf="!loginForm.controls.password?.pristine && loginForm.controls.password?.errors?.required">{{'COMMON.IS_REQUIRED'}}</span>
-                  <span class="error" *ngIf="!loginForm.controls.password?.pristine && loginForm.controls.password?.errors?.minlength">{{'COMMON.TOO_SHORT'}}</span>
-                  <input type="password" formControlName="password" placeholder="{{'LOGIN.PASSWORD' | translate}}">
-                </label>
-              </div>
-              <div class="kode_checkbox_style login_registor-style">
-                <label>
-                  <input type="checkbox" checked>
-                  <span></span>
-                  <small>{{'LOGIN.REMEMBER' | translate}}</small>
-                </label>
-              </div>
-              <a class="eco-forgot-account" href="#" [routerLink]="['/forgot-password']">{{'LOGIN.FORGOT_PASSWORD' | translate}}</a>
-              <button class="btn-mediem login_style" type="button" [disabled]="loginForm.invalid" (click)="login()">{{'LOGIN.LOGIN_NOW' | translate}}</button>
-              <span class="error" *ngIf="!responseError">{{responseError | translate}}</span>
-              <div class="login-user">
-                <p>{{'LOGIN.DONT_HAVE_ACCOUNT' | translate}}
-                  <a href="#" [routerLink]="['/signup']">{{'LOGIN.SIGNUP_NOW' | translate}}</a>
-                </p>
-              </div>
-            </div>
-          </form>
+          <app-login-inner (responseSuccess)="loggedIn($event)"></app-login-inner>
         </div>
       </div>
       <div class="col-md-3"></div>
