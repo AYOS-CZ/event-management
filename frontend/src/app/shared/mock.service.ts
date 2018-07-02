@@ -243,6 +243,49 @@ export class MockService {
     return this.wrapper(chosenEvents);
   }
 
+  myEventsUser() {
+    console.log('myEventsUser mock');
+    return this.wrapper({
+      events: [
+        {
+          meta: {
+            location: 'Frankfurt',
+            street: 'Driver\'s Lane, 22',
+            title: 'Mighty Shamans Healing Again!',
+            description: 'This is going to be awesome!',
+            GPS: {
+              lat: 56.989213,
+              log: -84.231474
+            },
+            date: Date.now() + 300000000,
+            availableSlots: 18,
+            id: 2
+          },
+          booking: {
+            healing: [{start: '11:00', end: '11:30'}, {start: '13:00', end: '13:30'}],
+            lecture: true
+          }
+        },
+        {
+          meta: {
+            location: 'Berlin',
+            street: 'Other Street, 1',
+            title: 'Learn Raiki Yourself!',
+            description: 'This is going to be awesome!',
+            GPS: {
+              lat: 16.989213,
+              log: -84.231474
+            },
+            date: Date.now() + 5000000000,
+          },
+          booking: {
+            healing: [{start: '13:00', end: '13:30'}]
+          }
+        }
+      ]
+    })
+  }
+
   serverError() {
     return this.wrapper({ message: 'COMMON.RANDOM_SERVER_ERROR' });
   }

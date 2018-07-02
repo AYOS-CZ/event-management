@@ -177,7 +177,7 @@
           <ul class="nav-menu">
 
             <li>
-              <a href="#" [routerLink]="['/booking']">{{'HEADER.EVENTS' | translate}}</a>
+              <a href="#" [routerLink]="['/booking']">{{'HEADER.BOOK' | translate}}</a>
             </li>
 
           </ul>
@@ -185,7 +185,7 @@
         <!-- Kode navigation End -->
         <div class="kode_button">
           <button type="button" class="btn-small" *ngIf="!login" (click)="go('/login')">{{'HEADER.LOGIN' | translate}}</button>
-          <button type="button" class="btn-small" *ngIf="login && login.role == 'user'" (click)="go('/personal/events')">{{'HEADER.PERSONAL' | translate}}</button>
+          <button type="button" class="btn-small" *ngIf="login && login.role == 'user'" (click)="go('/personal/events')">{{'HEADER.MY_EVENTS' | translate}}</button>
           <button type="button" class="btn-small" *ngIf="login && login.role == 'operator'" (click)="go('/operator/events')">{{'HEADER.OPERATE' | translate}}</button>
           <button type="button" class="btn-small" *ngIf="login && login.role == 'admin'" (click)="go('/admin/events')">{{'HEADER.ADMIN' | translate}}</button>
         </div>

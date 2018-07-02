@@ -1,14 +1,18 @@
 {
 	"COMMON": {
 		"OK": "Ok",
-		"HELLO": "Glad to have you back"
+		"HELLO": "Glad to have you back",
+		"REQUIRED": "This field is required",
+		"EMAIL_INVALID": "Email format is invalid"
 	},
 	"HEADER": {
 		"LOGIN": "Log In",
 		"HELLO": "Hello",
 		"PERSONAL": "Personal",
 		"LOG_OUT": "Log Out",
-		"EVENTS": "Events"
+		"BOOK": "Book",
+		"MY_EVENTS": "My Events",
+		"ACCOUNT": "Account"
 	},
 	"LOGIN": {
 		"HEADER": "Log In",
@@ -47,7 +51,8 @@
 		"BOOKED": "Lecture Booked",
 		"CHECKOUT": "Check Out",
 		"TOTAL": "Total",
-		"NONE": "Please choose suitable intervals"
+		"NONE": "Please choose suitable intervals",
+		"FILL_CONTACT": "Fill in your contact information"
 	},
 	"UNAUTHORIZED": {
 		"HEADER": "Unauthorized",
@@ -57,6 +62,16 @@
 	},
 	"LOGIN_OR_CONTACT": {
 		"HEADER": "Contacts",
-		"HEADER_2": "Order Details"
+		"HEADER_2": "Order Details",
+		"WELCOME_BACK": "Welcome back"
+	},
+	"MY_EVENTS": {
+		"HEADER": "My Events",
+		"DATE": "Date",
+		"LOCATION": "Location",
+		"HEALING": "Healing",
+		"LECTURE": "Lecture",
+		"LECTURE_INCLUDED": "Lecture included",
+		"FILTER": "Filter"
 	}
 }

@@ -27,27 +27,27 @@ import { SignupComponent } from './user/signup/signup.component';
 export const routes: Route[] = [
     //general utils
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent},
-    { path: 'unauthorized', component: UnauthorizedComponent},
-    { path: 'forgot-password', component: ForgotPasswordComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'signup', component: SignupComponent},
+    { path: 'home', component: HomeComponent },
+    { path: 'unauthorized', component: UnauthorizedComponent },
+    { path: 'forgot-password', component: ForgotPasswordComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'signup', component: SignupComponent },
     { path: 'personal/account', component: AccountComponent, canActivate: [AuthGuardAdminService, AuthGuardOperatorService, AuthGuardService] },
 
-     //event booking
-     { path: 'booking', component: EventBookingListComponent },
-     { path: 'booking/order', component: EventBookingOrderComponent },
+    //event booking
+    { path: 'booking', component: EventBookingListComponent },
+    { path: 'booking/order', component: EventBookingOrderComponent },
 
     //admin panel
     { path: 'admin/lectures/:id', component: LectureDetailComponent, canActivate: [AuthGuardAdminService] },
-    { path: 'admin/lectures', component: LectureListComponent, canActivate: [AuthGuardAdminService]},
-    { path: 'admin/lectures/new', component: CreateLectureComponent, canActivate: [AuthGuardAdminService]},
+    { path: 'admin/lectures', component: LectureListComponent, canActivate: [AuthGuardAdminService] },
+    { path: 'admin/lectures/new', component: CreateLectureComponent, canActivate: [AuthGuardAdminService] },
     { path: 'admin/healing/:id', component: HealingDetailComponent, canActivate: [AuthGuardAdminService] },
-    { path: 'admin/healing', component: HealingListComponent, canActivate: [AuthGuardAdminService]},
-    { path: 'admin/healing/new', component: HealingCreateComponent, canActivate: [AuthGuardAdminService]},
+    { path: 'admin/healing', component: HealingListComponent, canActivate: [AuthGuardAdminService] },
+    { path: 'admin/healing/new', component: HealingCreateComponent, canActivate: [AuthGuardAdminService] },
     { path: 'admin/events/:id', component: EventDetailComponent, canActivate: [AuthGuardAdminService] },
-    { path: 'admin/events', component: EventListComponent, canActivate: [AuthGuardAdminService]},
-    { path: 'admin/events/new', component: CreateEventComponent, canActivate: [AuthGuardAdminService]},
+    { path: 'admin/events', component: EventListComponent, canActivate: [AuthGuardAdminService] },
+    { path: 'admin/events/new', component: CreateEventComponent, canActivate: [AuthGuardAdminService] },
 
     //operator panel
     { path: 'operator/events/:id', component: EventListOperatorComponent, canActivate: [AuthGuardOperatorService] },
@@ -56,6 +56,6 @@ export const routes: Route[] = [
     //user panel
     { path: 'personal/events', component: EventListUserComponent, canActivate: [AuthGuardService] },
     { path: 'personal/events/:id', component: EventDetailUserComponent, canActivate: [AuthGuardService] }
-    
+
 
 ]

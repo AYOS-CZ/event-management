@@ -45,6 +45,7 @@ export class ApiService {
   get(endpoint: string, customErrorHandler = null) {
     return new Observable(observer => {
       if (CONFIG.isMock) {
+        console.log('mock ' + endpoint);
         this.mock[endpoint]().subscribe(res => {
           observer.next(res);
         }, err => this.handleError);

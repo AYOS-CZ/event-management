@@ -158,7 +158,7 @@ export class EventBookingOrderComponent implements OnInit, OnDestroy {
     }
 
     if(!haveErrors) {
-      console.log('proceed with booking!');
+      this.router.navigateByUrl('/personal/events');
     }
   }
 

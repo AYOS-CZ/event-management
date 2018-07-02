@@ -11,6 +11,7 @@ import { NotificationsService } from './notifications.service';
 import { MockService } from './mock.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { UserModule } from '../user/user.module';
+import { FormsModule } from '@angular/forms';
 
 // stands for services shared between all modules
 
@@ -31,7 +32,8 @@ import { UserModule } from '../user/user.module';
   ],
   exports: [
     TranslateModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   declarations: []
 })

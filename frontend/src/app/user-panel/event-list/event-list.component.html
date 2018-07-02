@@ -1,3 +1,42 @@
-<p>
-  event-list works!
-</p>
+<!--Eco Template Banner-->
+<div class="eco_banner eco_inner_page_banner">
+  <!--Eco Template Banner img-->
+  <div class="eco_headings">
+    <h3>{{'MY_EVENTS.HEADER' | translate}}</h3>
+  </div>
+</div>
+<!--Eco Template Banner ends-->
+
+<!--Eco Template content-->
+<div class="content">
+  <section>
+    <!--Eco detail starts-->
+    <div class="eco_blog_detail">
+      <!--Eco container-->
+      <div class="container">
+        <input class="input_donate_style filter" type="text" placeholder="{{'MY_EVENTS.FILTER' | translate}}" [(ngModel)]="search" (ngModelChange)="searchChanged($event)">
+        <table>
+          <thead>
+            <th>{{'MY_EVENTS.DATE' | translate}}</th>
+            <th>{{'MY_EVENTS.LOCATION' | translate}}</th>
+            <th>{{'MY_EVENTS.HEALING' | translate}}</th>
+            <th>{{'MY_EVENTS.LECTURE' | translate}}</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let event of events" [class.hidden]="!event.searchActive && search.length">
+              <td>{{event.meta.date | date:medium}}</td>
+              <td>{{event.meta.location}}</td>
+              <td>
+                <span *ngFor="let healing of event.booking.healing; let indexHealing = index">{{healing.start}}-{{healing.end}}<ng-template [ngIf]="indexHealing != event.booking.healing.length-1">, </ng-template>
+                </span>
+              </td>
+              <td>
+                <span *ngIf="event.booking.lecture">{{'MY_EVENTS.LECTURE_INCLUDED' | translate}}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>

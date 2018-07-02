@@ -1,0 +1,8 @@
+.filter {
+    width: 200px;
+    float: right;
+}
+
+.hidden {
+    display: none;
+}
