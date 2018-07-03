@@ -23,4 +23,12 @@ export class GlobalService {
     })
 
   }
+
+  today(date: number) {
+    
+    var dateObj = new Date(date);
+    var todayObj = new Date(Date.now());
+    console.log('today', dateObj, todayObj.toDateString());
+    return (todayObj.toDateString() === dateObj.toDateString());
+  }
 }

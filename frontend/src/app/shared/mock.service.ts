@@ -19,7 +19,7 @@ export class MockService {
   }
 
   login(data) {
-    return this.wrapper(<User>{ token: 'some_jwt_token', firstName: 'John', lastName: 'Doe', date_of_birth: 760303828, email: 'johndoe@gmail.com', phone: '+79197621370', role: 'user', validated: false })
+    return this.wrapper(<User>{ token: 'some_jwt_token', firstName: 'John', lastName: 'Doe', date_of_birth: 760303828, email: 'johndoe@gmail.com', phone: '+79197621370', role: 'operator', validated: false })
   }
 
   bookingList(data) {
@@ -245,6 +245,99 @@ export class MockService {
 
   myEventsUser() {
     console.log('myEventsUser mock');
+    return this.wrapper({
+      events: [
+        {
+          meta: {
+            location: 'Frankfurt',
+            street: 'Driver\'s Lane, 22',
+            title: 'Mighty Shamans Healing Again!',
+            description: 'This is going to be awesome!',
+            GPS: {
+              lat: 56.989213,
+              log: -84.231474
+            },
+            date: Date.now(),
+            availableSlots: 18,
+            id: 2,
+            subEvents: [
+              'healing',
+              'lecture'
+            ],
+          },
+          booking: {
+            healing: [{start: '11:00', end: '11:30'}, {start: '13:00', end: '13:30'}],
+            lecture: true
+          }
+        },
+        {
+          meta: {
+            location: 'Berlin',
+            street: 'Other Street, 1',
+            title: 'Learn Raiki Yourself!',
+            description: 'This is going to be awesome!',
+            GPS: {
+              lat: 16.989213,
+              log: -84.231474
+            },
+            date: Date.now() + 5000000000,
+          },
+          booking: {
+            healing: [{start: '13:00', end: '13:30'}]
+          },
+          subEvents: [
+            'healing'
+          ],
+        }
+      ]
+    })
+  }
+
+  myEventsOperator() {
+    console.log('myEventsOperator mock');
+    return this.wrapper({
+      events: [
+        {
+          meta: {
+            location: 'Frankfurt',
+            street: 'Driver\'s Lane, 22',
+            title: 'Mighty Shamans Healing Again!',
+            description: 'This is going to be awesome!',
+            GPS: {
+              lat: 56.989213,
+              log: -84.231474
+            },
+            date: Date.now() + 300000000,
+            availableSlots: 18,
+            id: 2
+          },
+          booking: {
+            healing: {bookedSlots: 5, totalSlots: 25},
+            lecture: {bookedSlots: 30, totalSlots: 100}
+          }
+        },
+        {
+          meta: {
+            location: 'Berlin',
+            street: 'Other Street, 1',
+            title: 'Learn Raiki Yourself!',
+            description: 'This is going to be awesome!',
+            GPS: {
+              lat: 16.989213,
+              log: -84.231474
+            },
+            date: Date.now() + 5000000000,
+          },
+          booking: {
+            healing: {bookedSlots: 9, totalSlots: 18}
+          }
+        }
+      ]
+    })
+  }
+
+  myEventsOperatorDetail() {
+    console.log('myEventsOperatorDetail mock');
     return this.wrapper({
       events: [
         {

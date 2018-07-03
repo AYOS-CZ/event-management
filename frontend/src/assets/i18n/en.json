@@ -12,7 +12,8 @@
 		"LOG_OUT": "Log Out",
 		"BOOK": "Book",
 		"MY_EVENTS": "My Events",
-		"ACCOUNT": "Account"
+		"ACCOUNT": "Account",
+		"OPERATE": "Operate"
 	},
 	"LOGIN": {
 		"HEADER": "Log In",
@@ -73,5 +74,12 @@
 		"LECTURE": "Lecture",
 		"LECTURE_INCLUDED": "Lecture included",
 		"FILTER": "Filter"
+	},
+	"EVENT_LIST_OPERATOR": {
+		"HEADER": "Event Operation",
+		"LOCATION": "Event Location",
+		"SUBEVENTS_HEALING": "Healing Booking",
+		"SUBEVENTS_LECTURE": "Lecture Booking",
+		"DATE": "Event Date"
 	}
 }

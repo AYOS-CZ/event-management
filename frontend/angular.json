@@ -27,7 +27,7 @@
               "src/assets/fonts"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "src/assets/css/bootstrap.css",
               "src/assets/css/chosen.min.css",
               "src/assets/css/colors.css",
@@ -131,5 +131,10 @@
       }
     }
   },
-  "defaultProject": "event-management"
+  "defaultProject": "event-management",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

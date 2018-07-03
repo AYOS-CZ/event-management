@@ -1,3 +1,36 @@
-<p>
-  event-list works!
-</p>
+<!--Eco Template Banner-->
+<div class="eco_banner eco_inner_page_banner">
+  <!--Eco Template Banner img-->
+  <div class="eco_headings">
+    <h3>{{'EVENT_LIST_OPERATOR.HEADER' | translate}}</h3>
+  </div>
+</div>
+<!--Eco Template Banner ends-->
+
+<!--Eco Template content-->
+<div class="content">
+  <section>
+    <!--Eco detail starts-->
+    <div class="eco_blog_detail">
+      <!--Eco container-->
+      <div class="container">
+        <table>
+          <thead>
+            <th>{{'EVENT_LIST_OPERATOR.LOCATION' | translate}}</th>
+            <th>{{'EVENT_LIST_OPERATOR.SUBEVENTS_HEALING' | translate}}</th>
+            <th>{{'EVENT_LIST_OPERATOR.SUBEVENTS_LECTURE' | translate}}</th>
+            <th>{{'EVENT_LIST_OPERATOR.DATE' | translate}}</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let event of events" class="event" [class.today]="gs.today(event.meta.date)">
+              <td>{{event.meta.location}}</td>
+              <td>{{event.booking.healing.bookedSlots}}/{{event.booking.healing.totalSlots}}</td>
+              <td><ng-template [ngIf]="event.booking.lecture">{{event.booking.lecture.bookedSlots}}/{{event.booking.lecture.totalSlots}}</ng-template></td>
+              <td>{{event.meta.date | date: 'medium'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
