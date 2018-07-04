@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../user/user';
+import { EventOperation } from '../operator-panel/operation';
 
 //mocked data while we dont have the backend
 
@@ -307,7 +308,7 @@ export class MockService {
               lat: 56.989213,
               log: -84.231474
             },
-            date: Date.now() + 300000000,
+            date: Date.now(),
             availableSlots: 18,
             id: 2
           },
@@ -336,47 +337,37 @@ export class MockService {
     })
   }
 
-  myEventsOperatorDetail() {
+  operation() {
     console.log('myEventsOperatorDetail mock');
-    return this.wrapper({
-      events: [
+    let event: EventOperation = {
+      title: 'Mighty Shamans Healing Again!',
+      date: Date.now(),
+      id: 2,
+      note: 'The lecturer might be late',
+      operation: [
         {
-          meta: {
-            location: 'Frankfurt',
-            street: 'Driver\'s Lane, 22',
-            title: 'Mighty Shamans Healing Again!',
-            description: 'This is going to be awesome!',
-            GPS: {
-              lat: 56.989213,
-              log: -84.231474
-            },
-            date: Date.now() + 300000000,
-            availableSlots: 18,
-            id: 2
-          },
-          booking: {
-            healing: [{start: '11:00', end: '11:30'}, {start: '13:00', end: '13:30'}],
-            lecture: true
-          }
+          name: 'John Smith',
+          user_id: 98,
+          timeSlots: [{start: '11:30', end: '12:00', active: false}, {start: '12:00', end: '12:30', active: false}],
+          active: false,
+          lecture: true,
+          paidOnline: 0,
+          paidOnsite: 0,
+          note: ''
         },
         {
-          meta: {
-            location: 'Berlin',
-            street: 'Other Street, 1',
-            title: 'Learn Raiki Yourself!',
-            description: 'This is going to be awesome!',
-            GPS: {
-              lat: 16.989213,
-              log: -84.231474
-            },
-            date: Date.now() + 5000000000,
-          },
-          booking: {
-            healing: [{start: '13:00', end: '13:30'}]
-          }
+          name: 'Lana Hellen',
+          user_id: 55,
+          timeSlots: [{start: '11:30', end: '12:00', active: false}, {start: '12:30', end: '13:00', active: false}],
+          active: false,
+          lecture: false,
+          paidOnline: 20,
+          paidOnsite: 0,
+          note: ''
         }
       ]
-    })
+    }
+    return this.wrapper(event)
   }
 
   serverError() {

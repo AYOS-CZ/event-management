@@ -1,9 +1,9 @@
 .event {
     cursor:pointer;
     &:hover {
-        background-color: red;
+        background-color: #d4d4d4;
     }
     .today {
-        background-color: green;
+        background-color: #7abf18;
     }
 }

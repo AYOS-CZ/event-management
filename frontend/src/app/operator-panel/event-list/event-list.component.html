@@ -22,11 +22,11 @@
             <th>{{'EVENT_LIST_OPERATOR.DATE' | translate}}</th>
           </thead>
           <tbody>
-            <tr *ngFor="let event of events" class="event" [class.today]="gs.today(event.meta.date)">
+            <tr *ngFor="let event of events" class="event" [routerLink]="['/operator/events/'+event.meta.id]">
               <td>{{event.meta.location}}</td>
               <td>{{event.booking.healing.bookedSlots}}/{{event.booking.healing.totalSlots}}</td>
               <td><ng-template [ngIf]="event.booking.lecture">{{event.booking.lecture.bookedSlots}}/{{event.booking.lecture.totalSlots}}</ng-template></td>
-              <td>{{event.meta.date | date: 'medium'}}</td>
+              <td [class.today]="gs.today(event.meta.date)">{{event.meta.date | date: 'medium'}}</td>
             </tr>
           </tbody>
         </table>

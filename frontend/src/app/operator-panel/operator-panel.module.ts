@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventListOperatorComponent } from './event-list/event-list.component';
 import { UserModule } from '../user/user.module';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    UserModule
+    UserModule,
+    TableModule
   ],
   declarations: [EventListOperatorComponent, EventOperationComponent]
 })

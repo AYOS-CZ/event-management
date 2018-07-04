@@ -1,3 +1,47 @@
-<p>
-  event-operation works!
-</p>
+<!--Eco Template Banner-->
+<div class="eco_banner eco_inner_page_banner">
+  <!--Eco Template Banner img-->
+  <div class="eco_headings">
+    <h3>{{'EVENT_OPERATION.HEADER' | translate}} {{event.title}}</h3>
+  </div>
+</div>
+<!--Eco Template Banner ends-->
+
+
+<!--Eco Template content-->
+<div class="content">
+  <section>
+    <!--Eco detail starts-->
+    <div class="eco_blog_detail">
+      <!--Eco container-->
+      <div class="container">
+          <p-table [value]="operation">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>{{'EVENT_OPERATION.ATTENDANT.NAME' | translate}}</th>
+                      <th>{{'EVENT_OPERATION.ATTENDANT.ACTIVE' | translate}}</th>
+                      <th>{{'EVENT_OPERATION.ATTENDANT.TIME_SLOT' | translate}}</th>
+                      <th>{{'EVENT_OPERATION.ATTENDANT.LECTURE' | translate}}</th>
+                      <th>{{'EVENT_OPERATION.ATTENDANT.PAID_ONLINE' | translate}}</th>
+                      <th>{{'EVENT_OPERATION.ATTENDANT.PAID_ONSITE' | translate}}</th>
+                      <th>{{'EVENT_OPERATION.ATTENDANT.PAID_TOTAL' | translate}}</th>
+                      <th>{{'EVENT_OPERATION.ATTENDANT.NOTE' | translate}}</th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-attendant>
+                  <tr>
+                      <td>{{attendant.name}}</td>
+                      <td>{{attendant.active}}</td>
+                      <td>{{attendant.lecture}}</td>
+                      <td>{{attendant.timeSlot.start}}-{{attendant.timeSlot.end}}</td>
+                      <td>{{attendant.paidOnline}}</td>
+                      <td>{{attendant.paidOnsite}}</td>
+                      <td>{{attendant.paidTotal}}</td>
+                      <td>{{attendant.note}}</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+      </div>
+    </div>
+  </section>
+</div>
