@@ -81,5 +81,24 @@
 		"SUBEVENTS_HEALING": "Healing Booking",
 		"SUBEVENTS_LECTURE": "Lecture Booking",
 		"DATE": "Event Date"
+	},
+	"EVENT_OPERATION": {
+		"HEADER": "Operation",
+		"ADD": "Add",
+		"EDIT": "Edit",
+		"SAVE": "Save",
+		"SESSIONS": "Healing Sessions",
+		"PAID": "Paid Total",
+		"TOTAL": "Attendance Overview",
+		"ATTENDANT": {			
+			"NAME": "Name",
+			"ACTIVE": "Active",
+			"TIME_SLOT": "Time Slot",
+			"LECTURE": "Lecture",
+			"PAID_ONLINE": "Paid Online",
+			"PAID_ONSITE": "Paid Onsite",
+			"PAID_TOTAL": "Total",
+			"NOTE": "Notes"
+		}
 	}
 }

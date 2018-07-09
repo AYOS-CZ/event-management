@@ -1,47 +1,129 @@
 <!--Eco Template Banner-->
 <div class="eco_banner eco_inner_page_banner">
-  <!--Eco Template Banner img-->
-  <div class="eco_headings">
-    <h3>{{'EVENT_OPERATION.HEADER' | translate}} {{event.title}}</h3>
-  </div>
+    <!--Eco Template Banner img-->
+    <div class="eco_headings">
+        <h3>{{'EVENT_OPERATION.HEADER' | translate}} {{event.title}}</h3>
+    </div>
 </div>
 <!--Eco Template Banner ends-->
 
 
 <!--Eco Template content-->
 <div class="content">
-  <section>
-    <!--Eco detail starts-->
-    <div class="eco_blog_detail">
-      <!--Eco container-->
-      <div class="container">
-          <p-table [value]="operation">
-              <ng-template pTemplate="header">
-                  <tr>
-                      <th>{{'EVENT_OPERATION.ATTENDANT.NAME' | translate}}</th>
-                      <th>{{'EVENT_OPERATION.ATTENDANT.ACTIVE' | translate}}</th>
-                      <th>{{'EVENT_OPERATION.ATTENDANT.TIME_SLOT' | translate}}</th>
-                      <th>{{'EVENT_OPERATION.ATTENDANT.LECTURE' | translate}}</th>
-                      <th>{{'EVENT_OPERATION.ATTENDANT.PAID_ONLINE' | translate}}</th>
-                      <th>{{'EVENT_OPERATION.ATTENDANT.PAID_ONSITE' | translate}}</th>
-                      <th>{{'EVENT_OPERATION.ATTENDANT.PAID_TOTAL' | translate}}</th>
-                      <th>{{'EVENT_OPERATION.ATTENDANT.NOTE' | translate}}</th>
-                  </tr>
-              </ng-template>
-              <ng-template pTemplate="body" let-attendant>
-                  <tr>
-                      <td>{{attendant.name}}</td>
-                      <td>{{attendant.active}}</td>
-                      <td>{{attendant.lecture}}</td>
-                      <td>{{attendant.timeSlot.start}}-{{attendant.timeSlot.end}}</td>
-                      <td>{{attendant.paidOnline}}</td>
-                      <td>{{attendant.paidOnsite}}</td>
-                      <td>{{attendant.paidTotal}}</td>
-                      <td>{{attendant.note}}</td>
-                  </tr>
-              </ng-template>
-          </p-table>
-      </div>
-    </div>
-  </section>
+    <section>
+        <!--Eco detail starts-->
+        <div class="eco_blog_detail">
+            <!--Eco container-->
+            <div class="container">
+                <div class="timeslot" *ngFor="let timeSlot of timeslotTable; let tableI = index">
+                    <b>{{timeSlot.time}} ({{timeSlot.attendants.length}})</b>
+                    <span class="add" *ngIf="event.subEvents.healing.slotsPerSession > timeSlot.attendants.length" (click)="addAttendant(timeSlot, tableI)">{{'EVENT_OPERATION.ADD' | translate}}
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </span>
+
+
+                    <table *ngIf="timeSlot.attendants.length">
+                        <thead>
+                            <th [width]="'120px'">{{'EVENT_OPERATION.ATTENDANT.TIME_SLOT' | translate}}</th>
+                            <th [width]="'150px'">{{'EVENT_OPERATION.ATTENDANT.NAME' | translate}}</th>
+                            <th [width]="'70px'">{{'EVENT_OPERATION.ATTENDANT.ACTIVE' | translate}}</th>
+                            <th [width]="'70px'">{{'EVENT_OPERATION.ATTENDANT.LECTURE' | translate}}</th>
+                            <th [width]="'100px'">{{'EVENT_OPERATION.ATTENDANT.PAID_ONLINE' | translate}}</th>
+                            <th [width]="'100px'">{{'EVENT_OPERATION.ATTENDANT.PAID_ONSITE' | translate}}</th>
+                            <th [width]="'100px'">{{'EVENT_OPERATION.ATTENDANT.PAID_TOTAL' | translate}}</th>
+                            <th>{{'EVENT_OPERATION.ATTENDANT.NOTE' | translate}}</th>
+                            <th [width]="'70px'"></th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let id of timeSlot.attendants; let i = index">
+                                <td>
+                                    <span *ngIf="!(edit.table == tableI && edit.id == i)">{{timeSlot.time}}</span>
+                                    <select name="" id="" *ngIf="(edit.table == tableI && edit.id == i)" (change)="selectChanged($event.target.value, findSlotIndex(event.operation[findIndex(id)].timeSlots, timeSlot.time), findIndex(id), tableI)">
+                                        <option *ngFor="let selectSlot of timeslotTable" [value]="selectSlot.time" [selected]="selectSlot.time == timeSlot.time"
+                                            [disabled]="
+                                            selectSlot.attendants.length >= event.subEvents.healing.slotsPerSession
+                                            || (findSlotIndex(event.operation[findIndex(id)].timeSlots, selectSlot.time) != -1)
+                                        ">
+                                            {{selectSlot.time}}
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <span *ngIf="!(edit.table == tableI && edit.id == i)">{{event.operation[findIndex(id)].name}}</span>
+                                    <input type="text" *ngIf="edit.table == tableI && edit.id == i" [(ngModel)]="event.operation[findIndex(id)].name">
+                                </td>
+                                <td>
+                                    <input type="checkbox" (ngModelChange)="activeChange(event.operation[findIndex(id)])" [(ngModel)]="event.operation[findIndex(id)].timeSlots[findSlotIndex(event.operation[findIndex(id)].timeSlots, timeSlot.time)].active"
+                                    />
+                                </td>
+                                <td>
+                                    <input type="checkbox" [(ngModel)]="event.operation[findIndex(id)].lecture" (ngModelChange)="inputChange()" />
+                                </td>
+                                <td>
+                                    <span>{{event.operation[findIndex(id)].paidOnline}}</span>
+                                </td>
+                                <td>
+                                    <span *ngIf="!(edit.table == tableI && edit.id == i)">{{event.operation[findIndex(id)].paidOnsite}}</span>
+                                    <input type="text" *ngIf="edit.table == tableI && edit.id == i" [(ngModel)]="event.operation[findIndex(id)].paidOnsite" (ngModelChange)="paidChange(event.operation[findIndex(id)])">
+                                </td>
+                                <td>{{event.operation[findIndex(id)].paidTotal}}</td>
+                                <td>
+                                    <span *ngIf="!(edit.table == tableI && edit.id == i)">{{event.operation[findIndex(id)].note}}</span>
+                                    <textarea type="text" *ngIf="edit.table == tableI && edit.id == i" [(ngModel)]="event.operation[findIndex(id)].note"></textarea>
+
+                                </td>
+                                <td>
+                                    <span class="editSave">
+                                        <span *ngIf="edit.table == tableI && edit.id == i" (click)="save(tableI, i)">{{'EVENT_OPERATION.SAVE' | translate}}</span>
+                                        <span *ngIf="!(edit.table == tableI && edit.id == i)" (click)="_edit(tableI, i)">{{'EVENT_OPERATION.EDIT' | translate}}</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- 
+                    <p-table [value]="operation" (onSort)="onSort()" *ngIf="timeSlot.attendants">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>{{'EVENT_OPERATION.ATTENDANT.TIME_SLOT' | translate}}</th>
+                                <th>{{'EVENT_OPERATION.ATTENDANT.NAME' | translate}}</th>
+                                <th>{{'EVENT_OPERATION.ATTENDANT.ACTIVE' | translate}}</th>
+                                <th>{{'EVENT_OPERATION.ATTENDANT.LECTURE' | translate}}</th>
+                                <th>{{'EVENT_OPERATION.ATTENDANT.PAID_ONLINE' | translate}}</th>
+                                <th>{{'EVENT_OPERATION.ATTENDANT.PAID_ONSITE' | translate}}</th>
+                                <th>{{'EVENT_OPERATION.ATTENDANT.PAID_TOTAL' | translate}}</th>
+                                <th>{{'EVENT_OPERATION.ATTENDANT.NOTE' | translate}}</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-attendant let-index="rowIndex">
+                            <tr [pReorderableRow]="index" *ngIf="attendant.timeSlot == timeSlot.time">
+                                <td>{{attendant.timeSlot}}</td>
+                                <td>{{attendant.name}}</td>
+                                <td>{{attendant.active}}</td>
+                                <td>{{attendant.lecture}}</td>
+                                <td>{{attendant.paidOnline}}</td>
+                                <td>{{attendant.paidOnsite}}</td>
+                                <td>{{attendant.paidTotal}}</td>
+                                <td>{{attendant.note}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table> -->
+                </div>
+                <hr>
+                <div class="total">
+                    <h5>{{'EVENT_OPERATION.TOTAL' | translate}}</h5>
+                    <ul>
+                        <li>
+                            <b>{{'EVENT_OPERATION.SESSIONS' | translate}}</b>
+                            <span> {{total.actualSessions}}/{{total.expectedSessions}}</span>
+                        </li>
+                        <li>
+                            <b>{{'EVENT_OPERATION.PAID' | translate}}</b>
+                            <span> {{total.actualPaid}}/{{total.expectedPaid}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

@@ -267,7 +267,7 @@ export class MockService {
             ],
           },
           booking: {
-            healing: [{start: '11:00', end: '11:30'}, {start: '13:00', end: '13:30'}],
+            healing: [{ start: '11:00', end: '11:30' }, { start: '13:00', end: '13:30' }],
             lecture: true
           }
         },
@@ -284,7 +284,7 @@ export class MockService {
             date: Date.now() + 5000000000,
           },
           booking: {
-            healing: [{start: '13:00', end: '13:30'}]
+            healing: [{ start: '13:00', end: '13:30' }]
           },
           subEvents: [
             'healing'
@@ -313,8 +313,8 @@ export class MockService {
             id: 2
           },
           booking: {
-            healing: {bookedSlots: 5, totalSlots: 25},
-            lecture: {bookedSlots: 30, totalSlots: 100}
+            healing: { bookedSlots: 5, totalSlots: 25 },
+            lecture: { bookedSlots: 30, totalSlots: 100 }
           }
         },
         {
@@ -330,7 +330,7 @@ export class MockService {
             date: Date.now() + 5000000000,
           },
           booking: {
-            healing: {bookedSlots: 9, totalSlots: 18}
+            healing: { bookedSlots: 9, totalSlots: 18 }
           }
         }
       ]
@@ -344,11 +344,24 @@ export class MockService {
       date: Date.now(),
       id: 2,
       note: 'The lecturer might be late',
+      subEvents: {
+        healing: {
+          start: '11:00',
+          sessionLength: 30,
+          breakLength: 0,
+          end: '20:00',
+          slotsPerSession: 4,
+          pricePerSession: 30
+        },
+        lecture: {
+          price: 20
+        }
+      },
       operation: [
         {
           name: 'John Smith',
           user_id: 98,
-          timeSlots: [{start: '11:30', end: '12:00', active: false}, {start: '12:00', end: '12:30', active: false}],
+          timeSlots: [{ start: '11:30', end: '12:00', active: false }, { start: '12:00', end: '12:30', active: false }],
           active: false,
           lecture: true,
           paidOnline: 0,
@@ -358,7 +371,7 @@ export class MockService {
         {
           name: 'Lana Hellen',
           user_id: 55,
-          timeSlots: [{start: '11:30', end: '12:00', active: false}, {start: '12:30', end: '13:00', active: false}],
+          timeSlots: [{ start: '11:30', end: '12:00', active: false }, { start: '12:30', end: '13:00', active: false }],
           active: false,
           lecture: false,
           paidOnline: 20,
@@ -366,17 +379,17 @@ export class MockService {
           note: ''
         }
       ]
-    }
+  }
     return this.wrapper(event)
   }
 
-  serverError() {
-    return this.wrapper({ message: 'COMMON.RANDOM_SERVER_ERROR' });
-  }
+serverError() {
+  return this.wrapper({ message: 'COMMON.RANDOM_SERVER_ERROR' });
+}
 
-  logout() {
-    return this.wrapper({ result: true });
-  }
+logout() {
+  return this.wrapper({ result: true });
+}
 
 
 }

@@ -1,0 +1,21 @@
+span.add {
+    margin-left: 10px;
+    cursor: pointer;
+    &:hover {
+        color: green;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+tr {
+    position: relative;
+}
+
+.editSave {
+    // position: absolute;
+    right: 0px;
+    cursor: pointer;
+}
