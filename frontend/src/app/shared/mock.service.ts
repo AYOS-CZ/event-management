@@ -20,7 +20,12 @@ export class MockService {
   }
 
   login(data) {
-    return this.wrapper(<User>{ token: 'some_jwt_token', firstName: 'John', lastName: 'Doe', date_of_birth: 760303828, email: 'johndoe@gmail.com', phone: '+79197621370', role: 'operator', validated: false })
+    console.log('login', data);
+    let user: User = <User>{ token: 'some_jwt_token', firstName: 'John', lastName: 'Doe', date_of_birth: 760303828, email: 'johndoe@gmail.com', phone: '+79197621370', validated: false, role: 'user' }
+    if(data.email == 'admin@gmail.com') user.role = 'admin';
+    if(data.email == 'user@gmail.com') user.role = 'user';
+    if(data.email == 'operator@gmail.com') user.role = 'operator';
+    return this.wrapper(user);
   }
 
   bookingList(data) {
